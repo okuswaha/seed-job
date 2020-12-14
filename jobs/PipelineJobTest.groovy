@@ -1,4 +1,13 @@
 pipelineJob('pipeline from script') {
+    authorization {
+        permission('hudson.model.Item.Read', 'anonymous')
+        permission('hudson.model.Item.Cancel', 'anonymous')
+        permission('hudson.model.Item.Workspace', 'anonymous')
+        permission('hudson.model.Item.Build', 'anonymous')
+    }
+
+    concurrentBuild(false)
+    logRotator(-1,10,-1,-1)
     definition {
         cps {
             script('''
